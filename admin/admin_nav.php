@@ -6,15 +6,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">COMPANY NAME</a>
+                <a class="navbar-brand" href="view_slider.php">Heritage Homestays</a>
             </div>
 
             <div class="header-right">
-
-                <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
-                <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
                 <a href="login.html" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
-
             </div>
         </nav>
         <!-- /. NAV TOP  -->
@@ -22,21 +18,13 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <div class="user-img-div">
-                            <img src="assets/img/user.png" class="img-thumbnail" />
-
-                            <div class="inner-text">
-                                Jhon Deo Alex
-                            <br />
-                                <small>Last Login : 2 Weeks Ago </small>
-                            </div>
-                        </div>
-
+                        <!-- <div class="user-img-div">
+                        </div> -->
                     </li>
 
 
                     <li>
-                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                        <a class="active-menu" href="admin_index.php"><i class="fa fa-dashboard "></i>Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-desktop "></i>Home slider<span class="fa arrow"></span></a>
@@ -71,6 +59,18 @@
                             </li>                           
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="fa fa-desktop "></i>Gallery<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="add_gallery.php"><i class="fa fa-toggle-on"></i>Add</a>
+                            </li>
+                            <li>
+                                <a href="view_gallery.php"><i class="fa fa-bell "></i>View</a>
+                            </li>                           
+                        </ul>
+                    </li>
+                    
                 </ul>
 
             </div>

@@ -4,7 +4,8 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.php">
-					<img src="assets/images/logo.png" alt="" />
+					<!-- <img src="assets/images/logo.png" alt="" /> -->
+					<h1 style="font-size: 35px;font-weight: bold;">Heritage Homestays</h1>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
