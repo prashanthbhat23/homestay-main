@@ -316,10 +316,11 @@ if(isset($_POST["chk_avail"])){
   function no_nights(){
     var date1 = new Date($('#in_id').val());
     var date2 = new Date($('#out_id').val());
-    var day1 = date1.getDate();
-    var day2 = date2.getDate();
-
-    var no_of_stay = day2 - day1;
+ 
+    var diff = date1.getTime() - date2.getTime();   
+    var daydiff = diff / (1000 * 60 * 60 * 24); 
+     
+    var no_of_stay = Math.abs(daydiff);
     document.getElementById("no_of_n").value=no_of_stay;
 
     var f_price=document.getElementById("set_p").value;

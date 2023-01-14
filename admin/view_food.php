@@ -34,22 +34,13 @@
                 <!-- /. ROW  -->
                 <div id="port-folio">
                     <div class="row ">
-                        <ul id="filters">
-                            <li><span class="filter active" data-filter="landscape nature awesome">All </span></li>
-                            <li><span class="filter active">/</span></li>
-                            <li><span class="filter" data-filter="landscape">Landscape</span></li>
-                            <li><span class="filter">/</span></li>
-                            <li><span class="filter" data-filter="nature">Nature</span></li>
-                            <li><span class="filter">/</span></li>
-                            <li><span class="filter" data-filter="awesome">Awesome</span></li>
-                        </ul>
                         <?php
                 if (mysqli_num_rows($res) > 0) {
                     while ($data = mysqli_fetch_assoc($res)) {  ?>
                         <div class="col-md-4 ">
                             <div class="portfolio-item awesome mix_all" data-cat="awesome">
                                 <img src="../assets/images/food/<?=$data['image']?>" class="img-responsive "
-                                    alt="" />
+                                    alt="" style="height: 250px;" />
                                 <div class="overlay">
                                     <p>
                                         <?=$data['name']?>
@@ -81,9 +72,7 @@
         <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
-    <div id="footer-sec">
-        &copy; 2014 YourCompany | Design By : <a href="http://www.binarytheme.com/" target="_blank">BinaryTheme.com</a>
-    </div>
+    
     <!-- /. FOOTER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
