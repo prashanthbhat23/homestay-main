@@ -1,0 +1,62 @@
+
+/** ADD YOUR AWESOME CODES HERE **/
+
+.iframe-map{
+    height: 500px;
+    width: 100%;
+}
+.map-outer{
+    box-shadow: 0px 0px 42px -24px rgba(0,0,0,1);
+}
+
+/* pop up */
+
+.pop-up-msg{
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* testinomial */
+.test_box {
+    padding: 30px 25px;
+    background: #d0a772;
+}
+
+.test_box h4 {
+    font-size: 17px;
+    color: #fff;
+    line-height: 18px;
+    display: block;
+    text-align: left;
+    float: left;
+    font-weight: 600;
+    padding: 0;
+    padding-top: 8px;
+}
+
+.test_box i {
+    font-size: 17px;
+    line-height: 28px;
+    text-align: right;
+    display: block;
+}
+
+.test_box p {
+    font-size: 17px;
+    line-height: 28px;
+    color: #fff;
+    text-align: left;
+    padding-top: 20px;
+}
+.hvr:hover{
+    background: linear-gradient(rgba(0, 0, 0, 0.61),rgba(0, 0, 0, 0.671));
+}
+
+
+/* cards */
+
+.outer-box-rooms{
+    margin: 60px auto;
+}
