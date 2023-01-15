@@ -10,7 +10,9 @@
             </div>
 
             <div class="header-right">
-                <a href="login.html" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+                <form action="admin_login.php" method="POST">
+                <button type="submit" name="logout_admin" class="btn btn-danger" title="Logout"><i class="fa fa-sign-out fa-2x fa-flip-horizontal"></i></button>
+                </form>
             </div>
         </nav>
         <!-- /. NAV TOP  -->
