@@ -186,6 +186,7 @@ if(isset($_POST["submit_room"])){
 //delete slider
 if(isset($_POST["del_slider"])){
 	$slider_id = $_POST["slider_id"];
+	echo $slider_id;
 	$del_slider_img = $_POST["del_slider_img"];
 
 	$del_slider_query="DELETE FROM home_slider WHERE id='$slider_id'";
