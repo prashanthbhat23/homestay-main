@@ -249,6 +249,28 @@ elseif(isset($_POST["del_food"])){
         exit(0);
     }
 }
+//delete gallery
+elseif(isset($_POST["del_gallery"])){
+	$gallery_id = $_POST["gallery_id"];
+	$del_gallery_img = $_POST["del_gallery_img"];
+
+	$del_gallery_query="DELETE FROM gallery WHERE id='$gallery_id'";
+    $run_del_gallery_query=mysqli_query($conn,$del_gallery_query);
+
+    if($run_del_gallery_query){
+        unlink("../assets/images/gallery/".$del_gallery_img);
+		$msg="gallery Deleted !";
+        $_SESSION["message"]=$msg;
+        header("location:view_gallery.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to delete !";
+        $_SESSION["message"]=$msg;
+        header("location:view_gallery.php");
+        exit(0);
+    }
+}
 //edit slider
 elseif(isset($_POST["edit_slider"])){
 	$slider_id = $_POST["edit_slider_id"];
@@ -377,5 +399,44 @@ elseif(isset($_POST["edit_food"])){
         exit(0);
     }
 }
+//edit gallery
+elseif(isset($_POST["edit_gallery"])){
+	$edit_gallery_id = $_POST["edit_gallery_id"];
+	$edit_gallery_img = $_POST["edit_gallery_img"];
+	unlink("../assets/images/gallery/".$edit_gallery_img);
+			$img_name = $_FILES['gallery_image']['name'];
+			$img_size = $_FILES['gallery_image']['size'];
+			$tmp_name = $_FILES['gallery_image']['tmp_name'];
+			$error = $_FILES['gallery_image']['error'];
+			echo $img_name;
+			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+			$img_ex_lc = strtolower($img_ex);
 
+			$allowed_exs = array("jpg", "jpeg", "png"); 
+
+			if (in_array($img_ex_lc, $allowed_exs)) {
+				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+				$img_upload_path = '../assets/images/gallery/'.$new_img_name;
+				move_uploaded_file($tmp_name, $img_upload_path);
+
+				$edit_gallery_query="UPDATE gallery SET image='$new_img_name' WHERE id='$edit_gallery_id'";
+				$run_edit_gallery_query=mysqli_query($conn,$edit_gallery_query);
+			}else {
+				$em = "You can't upload files of this type";
+		        header("Location: view_gallery.php?error=$em");
+				exit(0);
+			}
+    if($run_edit_slider_query){
+		$msg="gallery Updated !";
+        $_SESSION["message"]=$msg;
+        header("location:view_gallery.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to edit !";
+        $_SESSION["message"]=$msg;
+        header("location:view_gallery.php");
+        exit(0);
+    }
+}
 ?>
