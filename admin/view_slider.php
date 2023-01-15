@@ -49,14 +49,14 @@
                                     <a class="preview btn btn-info" title="<?=$images['title']?>"
                                         href="../assets/images/home_slider/<?=$images['image_url']?>">
                                         <i class="fa fa-search-plus fa-2x"></i></a>
-                                    <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-edit fa-2x"></i></button>
-                                    <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash fa-2x"></i></button>
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal1<?=$images['id']?>"><i class="fa fa-edit fa-2x"></i></button>
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal<?=$images['id']?>"><i class="fa fa-trash fa-2x"></i></button>
                                 </div>
                             </div>                           
                         </div>
 
                         <!--Delete Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal<?=$images['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -75,7 +75,7 @@
                         </div>    
 
                         <!-- Edit Modal -->
-                        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal1<?=$images['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <form role="form" action="upload.php" method="POST" enctype="multipart/form-data">

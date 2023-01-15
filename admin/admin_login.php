@@ -6,7 +6,7 @@ if(isset($_POST["admin_login"])){
     $password=$_POST["password"];
 
     if($uname != NULL || $password != NULL){
-        if($uname == "admin" || $password == "admin123"){
+        if($uname == "admin" && $password == "admin123"){
             $_SESSION["admin_auth"]=true;
             $_SESSION["message"]="Log in success!";
             header("location: dashboard.php");
