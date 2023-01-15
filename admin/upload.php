@@ -227,6 +227,28 @@ elseif(isset($_POST["del_room"])){
         exit(0);
     }
 }
+//delete food
+elseif(isset($_POST["del_food"])){
+	$food_id = $_POST["food_id"];
+	$del_food_img = $_POST["del_food_img"];
+
+	$del_food_query="DELETE FROM food WHERE id='$food_id'";
+    $run_del_food_query=mysqli_query($conn,$del_food_query);
+
+    if($run_del_food_query){
+        unlink("../assets/images/food/".$del_food_img);
+		$msg="food Deleted !";
+        $_SESSION["message"]=$msg;
+        header("location:view_food.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to delete !";
+        $_SESSION["message"]=$msg;
+        header("location:view_food.php");
+        exit(0);
+    }
+}
 //edit slider
 elseif(isset($_POST["edit_slider"])){
 	$slider_id = $_POST["edit_slider_id"];
@@ -295,19 +317,63 @@ elseif(isset($_POST["edit_room"])){
 				$run_edit_room_query=mysqli_query($conn,$edit_room_query);
 			}else {
 				$em = "You can't upload files of this type";
-		        // header("Location: view_rooms.php?error=$em");
+		        header("Location: view_rooms.php?error=$em");
 				exit(0);
 			}
     if($run_edit_room_query){
 		$msg="room Updated !";
         $_SESSION["message"]=$msg;
-        // header("location:view_rooms.php");
+        header("location:view_rooms.php");
         exit(0);
     }
     else{
         $msg="Failed to edit !";
         $_SESSION["message"]=$msg;
-        // header("location:view_rooms.php");
+        header("location:view_rooms.php");
+        exit(0);
+    }
+}
+//edit food
+elseif(isset($_POST["edit_food"])){
+	$food_id = $_POST["edit_food_id"];
+	$edit_food_name = $_POST["edit_food_name"];
+	$edit_food_ingre = $_POST["edit_food_ingre"];
+	$edit_food_category = $_POST["edit_food_category"];
+	$edit_food_price = $_POST["edit_food_price"];
+	$edit_food_img = $_POST["edit_food_img"];
+	unlink("../assets/images/food/".$edit_food_img);
+			$img_name = $_FILES['food_image']['name'];
+			$img_size = $_FILES['food_image']['size'];
+			$tmp_name = $_FILES['food_image']['tmp_name'];
+			$error = $_FILES['food_image']['error'];
+			
+			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+			$img_ex_lc = strtolower($img_ex);
+
+			$allowed_exs = array("jpg", "jpeg", "png"); 
+
+			if (in_array($img_ex_lc, $allowed_exs)) {
+				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+				$img_upload_path = '../assets/images/food/'.$new_img_name;
+				move_uploaded_file($tmp_name, $img_upload_path);
+
+				$edit_food_query="UPDATE food SET name='$edit_food_name',ingredients='$edit_food_ingre',category='$edit_food_category',price='$edit_food_price',image='$new_img_name' WHERE id='$food_id'";
+				$run_edit_food_query=mysqli_query($conn,$edit_food_query);
+			}else {
+				$em = "You can't upload files of this type";
+		        header("Location: view_food.php?error=$em");
+				exit(0);
+			}
+    if($run_edit_food_query){
+		$msg="Slider Updated !";
+        $_SESSION["message"]=$msg;
+        header("location:view_food.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to edit !";
+        $_SESSION["message"]=$msg;
+        header("location:view_food.php");
         exit(0);
     }
 }
