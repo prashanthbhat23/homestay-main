@@ -58,8 +58,9 @@ include "database.php";
 	<!-- Start Contact -->
     <div class="container" style="margin-top:60px;">
         <div class="map-outer">
-        <iframe class="iframe-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1945.9523868048466!2d75.0080770010933!3d12.719634958810333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba49f9f31354d17%3A0x27c81487714e74b1!2sPadyana%20Shree%20Mahalingeshwara%20Temple!5e0!3m2!1sen!2sin!4v1670939679657!5m2!1sen!2sin" style="border:0;" allowfullscreen="TRUE" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        <!-- <iframe class="iframe-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1945.9523868048466!2d75.0080770010933!3d12.719634958810333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba49f9f31354d17%3A0x27c81487714e74b1!2sPadyana%20Shree%20Mahalingeshwara%20Temple!5e0!3m2!1sen!2sin!4v1670939679657!5m2!1sen!2sin" style="border:0;" allowfullscreen="TRUE" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+			<iframe class="iframe-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.999280763316!2d75.18241661467358!3d12.778558322542562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4bd13e285c9c9%3A0x3f3404586361bcf9!2sShyam%20mess!5e0!3m2!1sen!2sin!4v1673787201256!5m2!1sen!2sin" style="border:0;" style="border:0;" allowfullscreen="TRUE" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
     </div>
 	<div class="contact-box">
 		<div class="container">
