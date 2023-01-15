@@ -72,7 +72,28 @@
                             </li>                           
                         </ul>
                     </li>
-                    
+                    <li>
+                        <a href="#"><i class="fa fa-desktop "></i>Activity<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="add_activity.php"><i class="fa fa-toggle-on"></i>Add</a>
+                            </li>
+                            <li>
+                                <a href="view_activity.php"><i class="fa fa-bell "></i>View</a>
+                            </li>                           
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-desktop "></i>Nearby Places<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="add_nearbyplaces.php"><i class="fa fa-toggle-on"></i>Add</a>
+                            </li>
+                            <li>
+                                <a href="view_nearbyplaces.php"><i class="fa fa-bell "></i>View</a>
+                            </li>                           
+                        </ul>
+                    </li>
                 </ul>
 
             </div>
