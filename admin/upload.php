@@ -186,7 +186,6 @@ if(isset($_POST["submit_room"])){
 //delete slider
 if(isset($_POST["del_slider"])){
 	$slider_id = $_POST["slider_id"];
-	echo $slider_id;
 	$del_slider_img = $_POST["del_slider_img"];
 
 	$del_slider_query="DELETE FROM home_slider WHERE id='$slider_id'";
@@ -206,8 +205,30 @@ if(isset($_POST["del_slider"])){
         exit(0);
     }
 }
+//delete room
+elseif(isset($_POST["del_room"])){
+	$room_id = $_POST["room_id"];
+	$del_room_img = $_POST["del_room_img"];
+
+	$del_room_query="DELETE FROM stay WHERE id='$room_id'";
+    $run_del_room_query=mysqli_query($conn,$del_room_query);
+
+    if($run_del_room_query){
+        unlink("../assets/images/rooms/".$del_room_img);
+		$msg="room Deleted !";
+        $_SESSION["message"]=$msg;
+        header("location:view_rooms.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to delete !";
+        $_SESSION["message"]=$msg;
+        header("location:view_rooms.php");
+        exit(0);
+    }
+}
+//edit slider
 elseif(isset($_POST["edit_slider"])){
-	//edit slider
 	$slider_id = $_POST["edit_slider_id"];
 	$edit_slider_title = $_POST["edit_slider_title"];
 	$edit_slider_img = $_POST["edit_slider_img"];
@@ -247,9 +268,48 @@ elseif(isset($_POST["edit_slider"])){
         exit(0);
     }
 }
-else {
-	$em = "unknown error occurred!";
-	header("Location: view_slider.php?error=$em");
-	exit(0);
+//edit room
+elseif(isset($_POST["edit_room"])){
+	$room_id = $_POST["edit_room_id"];
+	$edit_room_type = $_POST["edit_room_type"];
+	$edit_room_desc = $_POST["edit_room_desc"];
+	$edit_room_price = $_POST["edit_room_price"];
+	$edit_room_img = $_POST["edit_room_img"];
+	unlink("../assets/images/rooms/".$edit_room_img);
+			$img_name = $_FILES['room_image']['name'];
+			$img_size = $_FILES['room_image']['size'];
+			$tmp_name = $_FILES['room_image']['tmp_name'];
+			$error = $_FILES['room_image']['error'];
+	
+			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+			$img_ex_lc = strtolower($img_ex);
+
+			$allowed_exs = array("jpg", "jpeg", "png"); 
+
+			if (in_array($img_ex_lc, $allowed_exs)) {
+				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+				$img_upload_path = '../assets/images/rooms/'.$new_img_name;
+				move_uploaded_file($tmp_name, $img_upload_path);
+
+				$edit_room_query="UPDATE stay SET room_type='$edit_room_type',description='$edit_room_desc',image='$new_img_name',price='$edit_room_price' WHERE id='$room_id'";
+				$run_edit_room_query=mysqli_query($conn,$edit_room_query);
+			}else {
+				$em = "You can't upload files of this type";
+		        // header("Location: view_rooms.php?error=$em");
+				exit(0);
+			}
+    if($run_edit_room_query){
+		$msg="room Updated !";
+        $_SESSION["message"]=$msg;
+        // header("location:view_rooms.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to edit !";
+        $_SESSION["message"]=$msg;
+        // header("location:view_rooms.php");
+        exit(0);
+    }
 }
+
 ?>

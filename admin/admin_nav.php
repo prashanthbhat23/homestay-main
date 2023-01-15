@@ -8,7 +8,7 @@
                 </button>
                 <a class="navbar-brand" href="view_slider.php">Heritage Homestays</a>
             </div>
-
+            
             <div class="header-right">
                 <form action="admin_login.php" method="POST">
                 <button type="submit" name="logout_admin" class="btn btn-danger" title="Logout"><i class="fa fa-sign-out fa-2x fa-flip-horizontal"></i></button>

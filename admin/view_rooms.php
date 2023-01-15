@@ -34,15 +34,6 @@
                 <!-- /. ROW  -->
                 <div id="port-folio">
                     <div class="row ">
-                        <ul id="filters">
-                            <li><span class="filter active" data-filter="landscape nature awesome">All </span></li>
-                            <li><span class="filter active">/</span></li>
-                            <li><span class="filter" data-filter="landscape">Landscape</span></li>
-                            <li><span class="filter">/</span></li>
-                            <li><span class="filter" data-filter="nature">Nature</span></li>
-                            <li><span class="filter">/</span></li>
-                            <li><span class="filter" data-filter="awesome">Awesome</span></li>
-                        </ul>
                         <?php
                 if (mysqli_num_rows($res) > 0) {
                     while ($data = mysqli_fetch_assoc($res)) {  ?>
@@ -63,9 +54,85 @@
                                     <a class="preview btn btn-info" title="<?=$data['room_type']?>"
                                         href="../assets/images/rooms/<?=$data['image']?>"><i
                                             class="fa fa-plus fa-2x"></i></a>
+                                            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal1<?=$data['id']?>"><i class="fa fa-edit fa-2x"></i></button>
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal<?=$data['id']?>"><i class="fa fa-trash fa-2x"></i></button>
                                 </div>
                             </div>
                         </div>
+
+                        <!--Delete Modal -->
+                        <div class="modal fade" id="exampleModal<?=$data['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Do you really want to delete?</h5>
+                            </div>
+                            <div class="modal-footer">
+                            <form role="form" action="upload.php" method="POST" enctype="multipart/form-data">
+                                <input name="room_id" type="hidden" value="<?=$data['id']?>">
+                                <input name="del_room_img" type="hidden" value="<?=$data['image']?>">
+                                <button name="del_room" type="submit" class="btn btn-primary">Yes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </form>
+                            </div>
+                            </div>
+                        </div>
+                        </div>    
+
+                        <!-- Edit Modal -->
+                        <div class="modal fade" id="exampleModal1<?=$data['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <form role="form" action="upload.php" method="POST" enctype="multipart/form-data">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel2">Edit home slider</h5>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label>Enter Room type</label>
+                                    <input class="form-control" type="text" name="edit_room_type" value="<?=$data['room_type']?>">
+                                    <label>Enter Description</label>
+                                    <input class="form-control" type="text" name="edit_room_desc" value="<?=$data['description']?>">
+                                    <label>Enter Price</label>
+                                    <input class="form-control" type="text" name="edit_room_price" value="<?=$data['price']?>">
+                                </div>
+                
+                                <div class="form-group">
+                                        <label class="control-label">Upload File</label>
+                                        <div class="preview-zone hidden">
+                                            <div class="box box-solid">
+                                                <div class="box-header with-border">
+                                                    <div><b>Preview</b></div>
+                                                    <div class="box-tools pull-right">
+                                                        <button type="button" class="btn btn-danger btn-xs remove-preview">
+                                                            <i class="fa fa-times"></i> Reset This Form
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="box-body"></div>
+                                            </div>
+                                        </div>
+                                        <div class="dropzone-wrapper">
+                                            <div class="dropzone-desc">
+                                                <i class="glyphicon glyphicon-download-alt"></i>
+                                                <p>Choose an image file or drag it here.</p>
+                                            </div>
+                                            <input type="file" name="room_image" class="dropzone" required>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input name="edit_room_id" type="hidden" value="<?=$data['id']?>">
+                                <input name="edit_room_img" type="hidden" value="<?=$data['image']?>">
+                                <button name="edit_room" type="submit" class="btn btn-primary">Save Room</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </form>
+                            </div>
+                            </div>
+                        </div>
+                        </div> 
+
                         <?php } }?>
 
                     </div>
