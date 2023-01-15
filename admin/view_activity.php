@@ -1,5 +1,5 @@
 <?php include "../database.php"; 
-    $sql = "SELECT * FROM home_slider ORDER BY id DESC";
+    $sql = "SELECT * FROM activities ORDER BY id DESC";
     $res = mysqli_query($conn,  $sql);
 ?>
 
@@ -40,14 +40,17 @@
                     while ($images = mysqli_fetch_assoc($res)) {  ?>
                         <div class="col-md-4 ">
                          <div class="portfolio-item awesome mix_all" data-cat="awesome">
-                                <img src="../assets/images/home_slider/<?=$images['image_url']?>"
+                                <img src="../assets/images/activity/<?=$images['image']?>"
                                     class="img-responsive" alt="" style="height: 250px;" />
                                 <div class="overlay">
                                     <p>
-                                        <?=$images['title']?>
+                                        <?=$images['name']?>
                                     </p>
-                                    <a class="preview btn btn-info" title="<?=$images['title']?>"
-                                        href="../assets/images/home_slider/<?=$images['image_url']?>">
+                                    <p>
+                                        <?=$images['description']?>
+                                    </p>
+                                    <a class="preview btn btn-info" title="<?=$images['name']?>"
+                                        href="../assets/images/activity/<?=$images['image']?>">
                                         <i class="fa fa-search-plus fa-2x"></i></a>
                                     <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal1<?=$images['id']?>"><i class="fa fa-edit fa-2x"></i></button>
                                     <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal<?=$images['id']?>"><i class="fa fa-trash fa-2x"></i></button>
@@ -65,7 +68,7 @@
                             <div class="modal-footer">
                             <form role="form" action="upload.php" method="POST" enctype="multipart/form-data">
                                 <input name="activity_id" type="hidden" value="<?=$images['id']?>">
-                                <input name="del_activity_img" type="hidden" value="<?=$images['image_url']?>">
+                                <input name="del_activity_img" type="hidden" value="<?=$images['image']?>">
                                 <button name="del_activity" type="submit" class="btn btn-primary">Yes</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </form>
@@ -86,9 +89,9 @@
 
                                 <div class="form-group">
                                     <label>Enter Name</label>
-                                    <input class="form-control" type="text" name="edit_activity_name" value="<?=$images['title']?>">
+                                    <input class="form-control" type="text" name="edit_activity_name" value="<?=$images['name']?>">
                                     <label>Enter Description</label>
-                                    <input class="form-control" type="text" name="edit_activity_description" value="<?=$images['title']?>">
+                                    <input class="form-control" type="text" name="edit_activity_description" value="<?=$images['description']?>">
 
                                 </div>
                 
@@ -118,7 +121,7 @@
                             </div>
                             <div class="modal-footer">
                                 <input name="edit_activity_id" type="hidden" value="<?=$images['id']?>">
-                                <input name="edit_activity_img" type="hidden" value="<?=$images['image_url']?>">
+                                <input name="edit_activity_img" type="hidden" value="<?=$images['image']?>">
                                 <button name="edit_activity" type="submit" class="btn btn-primary">Save activity</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </form>

@@ -29,6 +29,9 @@
                         <a class="active-menu" href="admin_index.php"><i class="fa fa-dashboard "></i>Dashboard</a>
                     </li>
                     <li>
+                        <a href="bookings.php"><i class="fa fa-dashboard "></i>Bookings</a>
+                    </li>
+                    <li>
                         <a href="#"><i class="fa fa-desktop "></i>Home slider<span class="fa arrow"></span></a>
                          <ul class="nav nav-second-level">
                             <li>
@@ -94,6 +97,7 @@
                             </li>                           
                         </ul>
                     </li>
+                    
                 </ul>
 
             </div>

@@ -16,6 +16,7 @@
     <link href="assets/css/custom.css" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
 </head>
 
 <body>
@@ -23,7 +24,9 @@
         <?php include "admin_nav.php"  ?>
         <div id="page-wrapper">
             <div id="page-inner">
-                <h1>Static dash</h1>
+            
+			
+
             </div>
         </div>
     </div>

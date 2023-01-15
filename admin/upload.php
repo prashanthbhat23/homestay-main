@@ -181,6 +181,98 @@ if(isset($_POST["submit_room"])){
 	}
 }
 
+if(isset($_POST["activity_upload"])){
+	$img_name = $_FILES['activity_image']['name'];
+	$img_size = $_FILES['activity_image']['size'];
+	$tmp_name = $_FILES['activity_image']['tmp_name'];
+	$error = $_FILES['activity_image']['error'];
+
+	$name= $_POST['name'];
+	$description= $_POST['description'];
+
+	if ($error === 0) {
+		if ($img_size > 1000000000000000) {
+			$em = "Sorry, your file is too large.";
+		    header("Location: add_activity.php?error=$em");
+			exit(0);
+		}else {
+			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+			$img_ex_lc = strtolower($img_ex);
+
+			$allowed_exs = array("jpg", "jpeg", "png"); 
+
+			if (in_array($img_ex_lc, $allowed_exs)) {
+				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+				$img_upload_path = '../assets/images/activity/'.$new_img_name;
+				move_uploaded_file($tmp_name, $img_upload_path);
+
+				// Insert into Database
+				$insert_activity = "INSERT INTO activities (name,image,description) 
+				        VALUES('$name','$new_img_name','$description')";
+				mysqli_query($conn, $insert_activity);
+				header("Location: view_activity.php");
+				exit(0);
+			}else {
+				$em = "You can't upload files of this type";
+		        header("Location: add_activity.php?error=$em");
+				exit(0);
+			}
+		}
+	}else {
+		// echo "<script>alert('$error')</script>";
+		$em = "unknown error occurred!";
+		header("Location: add_activity.php?error=$em");
+		exit(0);
+	}
+}
+
+
+if(isset($_POST["place_upload"])){
+	$img_name = $_FILES['place_image']['name'];
+	$img_size = $_FILES['place_image']['size'];
+	$tmp_name = $_FILES['place_image']['tmp_name'];
+	$error = $_FILES['place_image']['error'];
+
+	$name= $_POST['name'];
+	$description= $_POST['description'];
+	$distance= $_POST['distance'];
+
+	if ($error === 0) {
+		if ($img_size > 1000000000000000) {
+			$em = "Sorry, your file is too large.";
+		    header("Location: add_nearbyplaces.php?error=$em");
+			exit(0);
+		}else {
+			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+			$img_ex_lc = strtolower($img_ex);
+
+			$allowed_exs = array("jpg", "jpeg", "png"); 
+
+			if (in_array($img_ex_lc, $allowed_exs)) {
+				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+				$img_upload_path = '../assets/images/places/'.$new_img_name;
+				move_uploaded_file($tmp_name, $img_upload_path);
+
+				// Insert into Database
+				$insert_places = "INSERT INTO places (name,description,distance,image) 
+				        VALUES('$name','$description','$distance','$new_img_name')";
+				mysqli_query($conn, $insert_places);
+				header("Location: view_nearbyplaces.php");
+				exit(0);
+			}else {
+				$em = "You can't upload files of this type";
+		        header("Location: add_nearbyplaces.php?error=$em");
+				exit(0);
+			}
+		}
+	}else {
+		// echo "<script>alert('$error')</script>";
+		$em = "unknown error occurred!";
+		header("Location: add_nearbyplaces.php?error=$em");
+		exit(0);
+	}
+}
+
 //deleting section
 
 //delete slider
@@ -271,6 +363,55 @@ elseif(isset($_POST["del_gallery"])){
         exit(0);
     }
 }
+
+//delete activity
+elseif(isset($_POST["del_activity"])){
+	$activity_id = $_POST["activity_id"];
+	$del_activity_img = $_POST["del_activity_img"];
+
+	$del_activity_query="DELETE FROM activities WHERE id='$activity_id'";
+    $run_del_activity_query=mysqli_query($conn,$del_activity_query);
+
+    if($run_del_activity_query){
+        unlink("../assets/images/activity/".$del_activity_img);
+		$msg="activity Deleted !";
+        $_SESSION["message"]=$msg;
+        header("location:view_activity.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to delete !";
+        $_SESSION["message"]=$msg;
+        header("location:view_activity.php");
+        exit(0);
+    }
+}
+
+
+//delete places
+elseif(isset($_POST["del_places"])){
+	$places_id = $_POST["places_id"];
+	$del_places_img = $_POST["del_places_img"];
+
+	$del_places_query="DELETE FROM places WHERE id='$places_id'";
+    $run_del_places_query=mysqli_query($conn,$del_places_query);
+
+    if($run_del_places_query){
+        unlink("../assets/images/places/".$del_places_img);
+		$msg="place Deleted !";
+        $_SESSION["message"]=$msg;
+        header("location:view_nearbyplaces.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to delete !";
+        $_SESSION["message"]=$msg;
+        header("location:view_nearbyplaces.php");
+        exit(0);
+    }
+}
+
+
 //edit slider
 elseif(isset($_POST["edit_slider"])){
 	$slider_id = $_POST["edit_slider_id"];
@@ -436,6 +577,92 @@ elseif(isset($_POST["edit_gallery"])){
         $msg="Failed to edit !";
         $_SESSION["message"]=$msg;
         header("location:view_gallery.php");
+        exit(0);
+    }
+}
+//edit activity
+elseif(isset($_POST["edit_activity"])){
+	$edit_activity_id = $_POST["edit_activity_id"];
+	$edit_activity_name = $_POST["edit_activity_name"];
+	$edit_activity_description = $_POST["edit_activity_description"];
+	$edit_activity_img = $_POST["edit_activity_img"];
+	unlink("../assets/images/activity/".$edit_activity_img);
+			$img_name = $_FILES['activity_image']['name'];
+			$img_size = $_FILES['activity_image']['size'];
+			$tmp_name = $_FILES['activity_image']['tmp_name'];
+			$error = $_FILES['activity_image']['error'];
+		
+			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+			$img_ex_lc = strtolower($img_ex);
+
+			$allowed_exs = array("jpg", "jpeg", "png"); 
+
+			if (in_array($img_ex_lc, $allowed_exs)) {
+				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+				$img_upload_path = '../assets/images/activity/'.$new_img_name;
+				move_uploaded_file($tmp_name, $img_upload_path);
+
+				$edit_activity_query="UPDATE activities SET name='$edit_activity_name',description='$edit_activity_description',image='$new_img_name' WHERE id='$edit_activity_id'";
+				$run_edit_activity_query=mysqli_query($conn,$edit_activity_query);
+			}else {
+				$em = "You can't upload files of this type";
+		        header("Location: view_activity.php?error=$em");
+				exit(0);
+			}
+    if($run_edit_activity_query){
+		$msg="activity Updated !";
+        $_SESSION["message"]=$msg;
+        header("location:view_activity.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to edit !";
+        $_SESSION["message"]=$msg;
+        header("location:view_activity.php");
+        exit(0);
+    }
+}
+
+//edit places
+elseif(isset($_POST["edit_places"])){
+	$edit_places_id = $_POST["edit_places_id"];
+	$edit_places_name = $_POST["edit_places_name"];
+	$edit_places_description = $_POST["edit_places_description"];
+	$edit_places_distance = $_POST["edit_places_distance"];
+	$edit_places_img = $_POST["edit_places_img"];
+	unlink("../assets/images/places/".$edit_places_img);
+			$img_name = $_FILES['places_image']['name'];
+			$img_size = $_FILES['places_image']['size'];
+			$tmp_name = $_FILES['places_image']['tmp_name'];
+			$error = $_FILES['places_image']['error'];
+		
+			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+			$img_ex_lc = strtolower($img_ex);
+
+			$allowed_exs = array("jpg", "jpeg", "png"); 
+
+			if (in_array($img_ex_lc, $allowed_exs)) {
+				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+				$img_upload_path = '../assets/images/places/'.$new_img_name;
+				move_uploaded_file($tmp_name, $img_upload_path);
+
+				$edit_places_query="UPDATE places SET name='$edit_places_name',description='$edit_places_description',distance='$edit_places_distance',image='$new_img_name' WHERE id='$edit_places_id'";
+				$run_edit_places_query=mysqli_query($conn,$edit_places_query);
+			}else {
+				$em = "You can't upload files of this type";
+		        header("Location: view_nearbyplaces.php?error=$em");
+				exit(0);
+			}
+    if($run_edit_activity_query){
+		$msg="Place Updated !";
+        $_SESSION["message"]=$msg;
+        header("location:view_nearbyplaces.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to edit !";
+        $_SESSION["message"]=$msg;
+        header("location:view_nearbyplaces.php");
         exit(0);
     }
 }
