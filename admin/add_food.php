@@ -46,10 +46,10 @@
                                     <option>Dinner</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Enter Price</label>
                                 <input class="form-control" type="text" name="price">
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <label class="control-label">Upload File</label>

@@ -16,8 +16,11 @@ include "../database.php";
     <link href="assets/css/basic.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS-->
+    <!-- GOOGLE FONTS--> 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <style>
+      
+    </style>
 </head>
 
 <body>
@@ -26,22 +29,7 @@ include "../database.php";
         <div id="page-wrapper">
             <div id="page-inner">
                 <h1>Homestay Bookings</h1><br>
-                <table id="myTable" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Sl No</th>
-                <th>Name</th>
-                <th>Room</th>
-                <th>Check In</th>
-                <th>Check Out</th>
-                <th>Phone</th>
-                <th>Adhar</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-        </thead>
- 
-        <tbody id="mytable">
+        <div class="row">
             <?php
             $i=1;
             $view_booking_query="SELECT * FROM booking";
@@ -49,24 +37,46 @@ include "../database.php";
             if($run_view_booking_query){
             while($row = $run_view_booking_query->fetch_assoc()) {
             ?>
-            <tr>
-                <td> <?= $i ?> </td>
-                <td> <?=$row["u_name"]?> </td>
-                <td> <?=$row["room_type"]?> </td>
-                <td> <?=$row["check_in"]?> </td>
-                <td> <?=$row["check_out"]?> </td>
-                <td> <?=$row["phone"]?> </td>
-                <td> <?=$row["adhar"]?> </td>
-                <td> <?=$row["final_price"]?> </td>
-                <td> 
+        <div class="col-3">    
+<div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <ul>
+                <li>
+                <?= $i ?>
+                </li>
+                <li>
+                <?=$row["u_name"]?>
+                </li>
+                <li>
+                <?=$row["room_type"]?>
+                </li>
+                <li>
+                <?=$row["check_in"]?>
+                </li>
+                <li>
+                <?=$row["check_out"]?>
+                </li>
+                <li>
+                <?=$row["phone"]?>
+                </li>
+                <li>
+                <?=$row["adhar"]?>
+                </li>
+                <li>
+                <?=$row["final_price"]?>
+                </li>
+                <li>
                 <?php 
                 if($row["status"]==1){ ?>
                     <button class="btn btn-sm btn-info">Complete</button>
                 <?php
                 }
                 ?>
-                </td>
-            </tr>
+                </li>
+            </ul>
+        </div>
+    </div>
+            </div>
             <?php 
             $i++;
             } }
@@ -74,18 +84,18 @@ include "../database.php";
                 echo "no run q";
             }
             ?>
-        </tbody>
-    </table>
+</div>
+   
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script>
     $(document).ready(function() {
         $('#myTable').DataTable();
     });
-    </script>
+    </script> -->
 
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->

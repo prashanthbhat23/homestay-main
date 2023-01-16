@@ -5,7 +5,7 @@
 			<div class="container">
 				<a class="navbar-brand" href="index.php">
 					<!-- <img src="assets/images/logo.png" alt="" /> -->
-					<h1 style="font-size: 35px;font-weight: bold;">Heritage Homestays</h1>
+					<h1 style="font-size: 35px;font-weight: bold;">Heritage Homestay</h1>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
@@ -20,9 +20,10 @@
 								<a class="dropdown-item" href="rooms.php">Rooms</a>
 								<a class="dropdown-item" href="reservation.php">Reservation</a>
 								<a class="dropdown-item" href="activities.php">Activities</a>
-								<a class="dropdown-item" href="gallery.php">Gallery</a>
+								
 							</div>
 						</li>
+						<li class="nav-item"><a class="nav-link" href="gallery.php">Gallery</a></li>
 						<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
 						<li class="nav-item dropdown">
 						<?php if(isset($_SESSION["auth"])){ ?>

@@ -96,7 +96,6 @@ include "database.php";
 						<div class="why-text">
 							<h4><?=$data['name']?></h4>
 							<p><?=$data['ingredients']?></p>
-							<h5> $ <?=$data['price']?></h5>
 						</div>
 					</div>
 				</div>

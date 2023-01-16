@@ -15,7 +15,7 @@ include "database.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Yamifood Restaurant - Responsive HTML5 Template</title>
+    <title>Heritage Homestay</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -33,7 +33,8 @@ include "database.php";
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/custom.css">
 
-
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
 </head>
 
 <body>
@@ -59,14 +60,14 @@ include "database.php";
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-6">
-					<img src="assets/images/about-img.jpg" alt="" class="img-fluid">
+					<img src="assets/images/123home.jpg" alt="" class="img-fluid">
 				</div>
 				<div class="col-lg-6 col-md-6 text-center">
 					<div class="inner-column">
-						<h1>Welcome To <span>Yamifood Restaurant</span></h1>
-						<h4>Little Story</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor suscipit feugiat. Ut at pellentesque ante, sed convallis arcu. Nullam facilisis, eros in eleifend luctus, odio ante sodales augue, eget lacinia lectus erat et sem. </p>
-						<p>Sed semper orci sit amet porta placerat. Etiam quis finibus eros. Sed aliquam metus lorem, a pellentesque tellus pretium a. Nulla placerat elit in justo vestibulum, et maximus sem pulvinar.</p>
+						<h1>Welcome To <span>Heritage Homestay</span></h1>
+						
+						<p>A heritage homestay is a type of accommodation where guests can stay in a traditional, historical property or building, often owned and operated by a local family. These homestays provide an opportunity for guests to experience the culture and way of life of the local community, while also supporting the preservation of local heritage. Some heritage homestays may be located in rural areas and provide a unique opportunity to experience traditional agriculture and farming practices. </p>
+						
 						<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a>
 					</div>
 				</div>
@@ -80,7 +81,40 @@ include "database.php";
 		</div>
 	</div>
 	<!-- End About -->
-	
+	<section>
+        <div class="container">
+		<div class="heading-title text-center">
+						<h2>Activities</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+            <div class="owl-carousel">
+
+            <?php  
+                $view_activities_query="SELECT * FROM activities";
+                $run_view_activities_query = mysqli_query($conn, $view_activities_query);
+                if (mysqli_num_rows($run_view_activities_query) > 0) {
+                while ($data = mysqli_fetch_assoc($run_view_activities_query)) { 
+                ?> 
+
+
+                <div class="card" style="margin:60px 0;">
+                    <img class="card-img-top hvr img-fluid" src="assets/images/activity/<?=$data['image']?>" alt="Card image cap" style="height: 275px;">
+                    <div class="card-body">
+                        <h2 class="card-text"><?=$data['name']?> </h2>
+                        <p class="card-text"><?=$data['description']?></p>
+
+                    </div>
+                </div>
+        <?php } } ?>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
 	<!-- Start Menu -->
 	<div class="menu-box">
 		<div class="container">
@@ -119,7 +153,6 @@ include "database.php";
 						<div class="why-text">
                             <h4><?=$data['name']?></h4>
 							<p><?=$data['ingredients']?></p>
-							<h5> $ <?=$data['price']?></h5>
 						</div>
 					</div>
 				</div>
@@ -227,6 +260,7 @@ include "database.php";
     <script src="assets/js/jquery-3.2.1.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
     <!-- ALL PLUGINS -->
     <script src="assets/js/jquery.superslides.min.js"></script>
     <script src="assets/js/images-loded.min.js"></script>
@@ -235,5 +269,29 @@ include "database.php";
     <script src="assets/js/form-validator.min.js"></script>
     <script src="assets/js/contact-form-script.js"></script>
     <script src="assets/js/custom.js"></script>
+	<script>
+    $('.owl-carousel').owlCarousel({
+        loop: false,
+        margin: 20,
+        responsiveClass: true,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: false
+            },
+            600: {
+                items: 3,
+                nav: false
+            },
+            1000: {
+                items: 3,
+                nav: false
+            }
+        }
+    })
+    </script>
 </body>
 </html>
