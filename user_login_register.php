@@ -12,10 +12,10 @@ if(isset($_POST["register_user"])){
     $adhar=$_POST["adhar"];
     $password=$_POST["password"];
     $re_password=$_POST["re_password"];
-    $token = md5(rand());
+    // $token = md5(rand());
     if($password == $re_password){
-        $register_query="INSERT INTO user (name,email,phone,adhar,password,token) 
-        VALUES('$name','$email','$phone','$adhar','$password','$token')";
+        $register_query="INSERT INTO user (name,email,phone,adhar,password) 
+        VALUES('$name','$email','$phone','$adhar','$password')";
         $run_register_query=mysqli_query($conn,$register_query);
         if($run_register_query){
             $msg="Registerd successfully !";
