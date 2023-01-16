@@ -150,7 +150,7 @@ include "database.php";
 					<div class="overflow-hidden">
 						<h4>Phone</h4>
 						<p class="lead">
-							+01 123-456-4590
+							+91 9740782911
 						</p>
 					</div>
 				</div>
@@ -159,7 +159,7 @@ include "database.php";
 					<div class="overflow-hidden">
 						<h4>Email</h4>
 						<p class="lead">
-							yourmail@gmail.com
+							heritage@gmail.com
 						</p>
 					</div>
 				</div>
@@ -168,7 +168,7 @@ include "database.php";
 					<div class="overflow-hidden">
 						<h4>Location</h4>
 						<p class="lead">
-							800, Lorem Street, US
+							Nehru Nagara, Puttur
 						</p>
 					</div>
 				</div>

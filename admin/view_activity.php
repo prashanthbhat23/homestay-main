@@ -41,7 +41,7 @@
                         <div class="col-md-4 ">
                          <div class="portfolio-item awesome mix_all" data-cat="awesome">
                                 <img src="../assets/images/activity/<?=$images['image']?>"
-                                    class="img-responsive" alt="" style="height: 250px;" />
+                                    class="img-responsive" alt="" style="height: 250px;width: 100%" />
                                 <div class="overlay">
                                     <p>
                                         <?=$images['name']?>

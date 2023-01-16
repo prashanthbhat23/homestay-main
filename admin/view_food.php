@@ -40,7 +40,7 @@
                         <div class="col-md-4 ">
                             <div class="portfolio-item awesome mix_all" data-cat="awesome">
                                 <img src="../assets/images/food/<?=$data['image']?>" class="img-responsive "
-                                    alt="" style="height: 250px;" />
+                                    alt="" style="height: 250px;width: 100%" />
                                 <div class="overlay">
                                     <p>
                                         <?=$data['name']?>
@@ -51,9 +51,7 @@
                                     <p>
                                         <?=$data['category']?>
                                     </p>
-                                    <p>
-                                        <?=$data['price']?>
-                                    </p>
+                                        
                                     <a class="preview btn btn-info" title="<?=$data['name']?>"
                                         href="../assets/images/food/<?=$data['image']?>"><i
                                             class="fa fa-plus fa-2x"></i></a> 

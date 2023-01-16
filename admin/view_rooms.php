@@ -39,7 +39,7 @@
                     while ($data = mysqli_fetch_assoc($res)) {  ?>
                         <div class="col-md-4 ">
                             <div class="portfolio-item awesome mix_all" data-cat="awesome">
-                                <img src="../assets/images/rooms/<?=$data['image']?>" class="img-responsive "
+                                <img src="../assets/images/rooms/<?=$data['image']?>" class="img-responsive " style="width: 100%;height: 250px"
                                     alt="" />
                                 <div class="overlay">
                                     <p>

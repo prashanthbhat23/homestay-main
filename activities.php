@@ -192,13 +192,12 @@ include "database.php";
     <script src="assets/js/custom.js"></script>
     <script>
     $('.owl-carousel').owlCarousel({
-        loop: true,
+        loop: false,
         margin: 20,
         responsiveClass: true,
-        autoplay: true,
+        autoplay: false,
         autoplayTimeout: 5000,
         autoplayHoverPause: true,
-        loop: true,
         responsive: {
             0: {
                 items: 1,
