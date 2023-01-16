@@ -217,7 +217,17 @@ if(isset($_POST["chk_avail"])){
             <?php
             if($run_check_avail_query){
             while($data = $run_check_avail_query->fetch_assoc()) {
+
+            if($data['status']==1){ 
+                continue;
+            }
             ?>
+            <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width:100%;">
+                
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div> -->
             <div class="col-md-4">
                 <div class="hotel-content">
                     <div class="hotel-grid" style="background-image: url(assets/images/rooms/<?=$data['image']?> );">

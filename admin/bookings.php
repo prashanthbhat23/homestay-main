@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php include "admin_auth.php";
 include "../database.php"; 
+
 ?>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,10 +18,10 @@ include "../database.php";
     <link href="assets/css/basic.css" rel="stylesheet" />
     <!--CUSTOM MAIN STYLES-->
     <link href="assets/css/custom.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS--> 
+    <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <style>
-      
+
     </style>
 </head>
 
@@ -28,64 +30,62 @@ include "../database.php";
         <?php include "admin_nav.php"  ?>
         <div id="page-wrapper">
             <div id="page-inner">
+            <?php include "../message.php"; ?>
                 <h1>Homestay Bookings</h1><br>
-        <div class="row">
-            <?php
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Sl No</th>
+                                <th>User Name</th>
+                                <th>Room Type</th>
+                                <th>Check In</th>
+                                <th>Check Out</th>
+                                <th>Phone</th>
+                                <th>Adhar</th>
+                                <th>Final price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
             $i=1;
             $view_booking_query="SELECT * FROM booking";
             $run_view_booking_query = mysqli_query($conn,$view_booking_query);
             if($run_view_booking_query){
             while($row = $run_view_booking_query->fetch_assoc()) {
             ?>
-        <div class="col-3">    
-<div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <ul>
-                <li>
-                <?= $i ?>
-                </li>
-                <li>
-                <?=$row["u_name"]?>
-                </li>
-                <li>
-                <?=$row["room_type"]?>
-                </li>
-                <li>
-                <?=$row["check_in"]?>
-                </li>
-                <li>
-                <?=$row["check_out"]?>
-                </li>
-                <li>
-                <?=$row["phone"]?>
-                </li>
-                <li>
-                <?=$row["adhar"]?>
-                </li>
-                <li>
-                <?=$row["final_price"]?>
-                </li>
-                <li>
-                <?php 
-                if($row["status"]==1){ ?>
-                    <button class="btn btn-sm btn-info">Complete</button>
-                <?php
-                }
-                ?>
-                </li>
-            </ul>
-        </div>
-    </div>
-            </div>
-            <?php 
+            <form id="form" action="upload.php" method="POST">
+                            <tr>
+                                <td><?= $i ?> <input type="hidden" name="book_id" value="<?=$row["id"]?>"></td>
+                                <td> <?=$row["u_name"]?></td>
+                                <td> <?=$row["room_type"]?></td>
+                                <td> <?=$row["check_in"]?></td>
+                                <td> <?=$row["check_out"]?></td>
+                                <td> <?=$row["phone"]?></td>
+                                <td> <?=$row["adhar"]?></td>
+                                <td> <?=$row["final_price"]?></td>
+                                <?php if($row["status"]==1){ ?>
+                                <td><button name="complete_booking" type="submit" class="timer btn btn-info btn-sm">Complete</button></td>
+                                <?php } 
+                                else{?>
+                                <td><button name="delete_booking" type="submit" class="timer btn btn-danger btn-sm">Delete</button></td>
+                                <?php } ?>
+                            </tr>
+            </form>
+
+                            <?php 
             $i++;
             } }
             else{
                 echo "no run q";
             }
             ?>
-</div>
-   
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
@@ -107,7 +107,7 @@ include "../database.php";
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
 
-
+</script>
 
 </body>
 
