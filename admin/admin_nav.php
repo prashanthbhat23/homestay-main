@@ -97,6 +97,9 @@
                             </li>                           
                         </ul>
                     </li>
+                    <li>
+                        <a href="settings.php"><i class="fa fa-dashboard "></i>Site settings</a>
+                    </li>
                     
                 </ul>
 

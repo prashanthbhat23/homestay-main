@@ -1,6 +1,5 @@
 <?php 
 include "../database.php";
-
 if (isset($_POST['submit']) && isset($_FILES['slider_image'])) {
 
 	$img_name = $_FILES['slider_image']['name'];
@@ -665,5 +664,190 @@ elseif(isset($_POST["edit_places"])){
         header("location:view_nearbyplaces.php");
         exit(0);
     }
+}
+
+
+//booking
+
+if(isset($_POST["complete_booking"])){
+	$book_id=$_POST["book_id"];
+
+	$set_book_query="UPDATE booking SET status=0 WHERE id='$book_id'";
+	$run_set_book_query=mysqli_query($conn,$set_book_query);
+
+	if($run_set_book_query)
+	{
+		$msg="Booking completed !";
+        $_SESSION["message"]=$msg;
+        header("location:bookings.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to complete !";
+        $_SESSION["message"]=$msg;
+        header("location:bookings.php");
+        exit(0);
+	}
+}
+elseif(isset($_POST["delete_booking"])){
+	$book_id=$_POST["book_id"];
+
+	$set_book_query="DELETE FROM booking WHERE id='$book_id'";
+	$run_set_book_query=mysqli_query($conn,$set_book_query);
+
+	if($run_set_book_query)
+	{
+		$msg="Booking Deleted !";
+        $_SESSION["message"]=$msg;
+        header("location:bookings.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to delete !";
+        $_SESSION["message"]=$msg;
+        header("location:bookings.php");
+        exit(0);
+	}
+}
+//user disable
+if(isset($_POST["disable_user"])){
+	$user_id=$_POST["user_id"];
+
+	$set_user_query="UPDATE user SET isactive=0 WHERE id='$user_id'";
+	$run_set_user_query=mysqli_query($conn,$set_user_query);
+
+	if($run_set_user_query)
+	{
+		$_SESSION["auth"] = false;
+		$msg="User disabled !";
+        $_SESSION["message"]=$msg;
+        header("location:dashboard.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to disable !";
+        $_SESSION["message"]=$msg;
+        header("location:dashboard.php");
+        exit(0);
+	}
+}
+//user enable
+elseif(isset($_POST["enable_user"])){
+	$user_id=$_POST["user_id"];
+
+	$set_user_query="UPDATE user SET isactive=1 WHERE id='$user_id'";
+	$run_set_user_query=mysqli_query($conn,$set_user_query);
+
+	if($run_set_user_query)
+	{
+		$_SESSION["auth"] = true;
+		$msg="User enabled !";
+        $_SESSION["message"]=$msg;
+        header("location:dashboard.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to enable !";
+        $_SESSION["message"]=$msg;
+        header("location:dashboard.php");
+        exit(0);
+	}
+}
+
+//room disable
+if(isset($_POST["disable_room"])){
+	$room_id=$_POST["room_id"];
+	echo $room_id;
+	$set_room_query="UPDATE stay SET status=1 WHERE id='$room_id'";
+	$run_set_room_query=mysqli_query($conn,$set_room_query);
+
+	if($run_set_room_query)
+	{
+		$msg="Room disabled !";
+        $_SESSION["message"]=$msg;
+        header("location:dashboard.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to disable !";
+        $_SESSION["message"]=$msg;
+        header("location:dashboard.php");
+        exit(0);
+	}
+}
+//room enable
+elseif(isset($_POST["enable_room"])){
+	$room_id=$_POST["room_id"];
+	echo $room_id;
+	$set_room_query="UPDATE stay SET status=0 WHERE id='$room_id'";
+	$run_set_room_query=mysqli_query($conn,$set_room_query);
+
+	if($run_set_room_query)
+	{
+		$msg="Room Enabled !";
+        $_SESSION["message"]=$msg;
+        header("location:dashboard.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to enable !";
+        $_SESSION["message"]=$msg;
+        header("location:dashboard.php");
+        exit(0);
+	}
+}
+
+//setting
+if(isset($_POST["general_set"])){
+	$title=$_POST["title"];
+	$description=$_POST["description"];
+
+	$set_set_query="UPDATE setting SET title='$title',about_us='$description'";
+	$run_set_set_query=mysqli_query($conn,$set_set_query);
+
+	if($run_set_set_query)
+	{
+		$msg="Updated !";
+        $_SESSION["message"]=$msg;
+        header("location:settings.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to update !";
+        $_SESSION["message"]=$msg;
+        header("location:settings.php");
+        exit(0);
+	}
+}
+if(isset($_POST["contact_set"])){
+	$phone=$_POST["phone"];
+	$email=$_POST["email"];
+	$map=$_POST["map"];
+	$address=$_POST["address"];
+
+	$set_set_query="UPDATE setting SET phone='$phone',email='$email',map='$map',address='$address'";
+	$run_set_set_query=mysqli_query($conn,$set_set_query);
+
+	if($run_set_set_query)
+	{
+		$msg="Updated !";
+        $_SESSION["message"]=$msg;
+        header("location:settings.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to update !";
+        $_SESSION["message"]=$msg;
+        header("location:settings.php");
+        exit(0);
+	}
 }
 ?>

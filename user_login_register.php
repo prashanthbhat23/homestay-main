@@ -55,6 +55,13 @@ if(isset($_POST["login_user"])){
             $user_email = $row["email"];
             $user_phone = $row["phone"];
             $user_adhar = $row["adhar"];
+            $user_status = $row["isactive"];
+            if($user_status == 0){
+                $msg="User Disabled !";
+                $_SESSION["message"]=$msg;
+                header("location:login.php");
+                exit(0);
+            }
         }
 
         $_SESSION["auth"] = true;
