@@ -4,6 +4,10 @@ include "authentication.php";
 include "database.php";
 
 $date = date('Y-m-d');
+
+$sql = "SELECT * FROM setting limit 1";
+$res = mysqli_query($conn,  $sql);
+$data = $res->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +21,7 @@ $date = date('Y-m-d');
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Yamifood Restaurant - Responsive HTML5 Template</title>
+    <title><?=$data['title'] ?></title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -113,30 +117,7 @@ $date = date('Y-m-d');
     </div>
     <!-- End slides -->
 
-    <!-- Start About -->
-    <!-- <div class="about-section-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <img src="assets/images/about-img.jpg" alt="" class="img-fluid">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-                    <div class="inner-column">
-                        <h1>Welcome To <span>Yamifood Restaurant</span></h1>
-                        <h4>Little Story</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor suscipit
-                            feugiat. Ut at pellentesque ante, sed convallis arcu. Nullam facilisis, eros in eleifend
-                            luctus, odio ante sodales augue, eget lacinia lectus erat et sem. </p>
-                        <p>Sed semper orci sit amet porta placerat. Etiam quis finibus eros. Sed aliquam metus lorem, a
-                            pellentesque tellus pretium a. Nulla placerat elit in justo vestibulum, et maximus sem
-                            pulvinar.</p>
-                        <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- End About -->
+    
 
     <!-- Start QT -->
     <!-- <div class="qt-box qt-background">

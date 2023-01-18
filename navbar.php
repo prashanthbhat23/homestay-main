@@ -14,10 +14,10 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Our Services</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="food.php">Menu</a>
-								<a class="dropdown-item" href="rooms.php">Rooms</a>
+								<!-- <a class="dropdown-item" href="rooms.php">Rooms</a> -->
 								<a class="dropdown-item" href="reservation.php">Reservation</a>
 								<a class="dropdown-item" href="activities.php">Activities</a>
 								

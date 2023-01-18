@@ -6,6 +6,10 @@ if(isset($_SESSION["auth"])){
   header("location:index.php");
   exit(0);
 }
+
+$sql = "SELECT * FROM setting limit 1";
+$res = mysqli_query($conn,  $sql);
+$data = $res->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +23,7 @@ if(isset($_SESSION["auth"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Yamifood Restaurant - Responsive HTML5 Template</title>
+    <title><?=$data['title'] ?></title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">

@@ -6,6 +6,10 @@ if(isset($_SESSION["auth"])){
   header("location:index.php");
   exit(0);
 }
+
+$sql = "SELECT * FROM setting limit 1";
+$res = mysqli_query($conn,  $sql);
+$data = $res->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +23,7 @@ if(isset($_SESSION["auth"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Yamifood Restaurant - Responsive HTML5 Template</title>
+    <title><?=$data['title'] ?></title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -163,12 +167,12 @@ a:hover, a:focus{
     Create a new account!
   </span>
   <form class="login-form form" action="user_login_register.php" method="POST">
-    <input type="text" class="input" placeholder="Name" name="name">
-    <input type="email" class="input" placeholder="Email" name="email">
-    <input type="number" class="input" placeholder="Phone" name="phone">
-    <input type="text" class="input" placeholder="Adhar no" name="adhar">
-    <input type="password" class="input" placeholder="Password" name="password">
-    <input type="password" class="input" placeholder="Re enter - Password" name="re_password">
+    <input type="text" class="input" placeholder="Name" name="name" required>
+    <input type="email" class="input" placeholder="Email" name="email" required>
+    <input type="number" class="input" placeholder="Phone" name="phone" required>
+    <input type="text" class="input" placeholder="Adhar no" name="adhar" required>
+    <input type="password" class="input" placeholder="Password" name="password" required>
+    <input type="password" class="input" placeholder="Re enter - Password" name="re_password" required>
     <?php include "message.php"; ?>
     <a class="forgot-link" href="#">Forgot password?</a>
     <input type="submit" name="register_user" value="Register" class="send-btn btn">

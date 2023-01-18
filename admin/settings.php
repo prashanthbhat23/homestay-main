@@ -1,4 +1,8 @@
 <?php include "../database.php"; 
+
+$sql = "SELECT * FROM setting limit 1";
+$res = mysqli_query($conn,  $sql);
+$data = $res->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +11,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Bootstrap Advance Admin Template</title>
+    <title><?=$data['title'] ?></title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -61,8 +65,8 @@
                                 <input class="form-control" value="<?=$data['phone'] ?>" type="number" name="phone">
                                 <label>Email</label>
                                 <input class="form-control" value="<?=$data['email'] ?>" type="email" name="email">
-                                <label>Map Link</label>
-                                <input class="form-control" value="<?=$data['map'] ?>" type="text" name="map">
+                                <!-- <label>Map Link</label>
+                                <input class="form-control" value="" type="text" name="map"> -->
                                 <label>Address</label>
                                 <textarea class="form-control" type="text" name="address"><?=$data['address'] ?></textarea>
                             </div>
@@ -73,13 +77,13 @@
                 <div class="panel panel-danger">
                     <div class="panel-heading">
                         <h3>
-                        Shutdown Website
+                        Shutdown Website 
                         </h3> 
                         <p>
                             By Shutting down Website , Website will be inaccessible!!!
                         </p>
                         <div class="right">
-                            <form id="myform" action="../authentication.php" method="POST">
+                            <form id="myform" action="../shut_post.php" method="POST">
                                 <?php 
                                 if($data["shutdown"]==0){ ?>
                                 <button name="down" type="submit" class="timer btn btn-danger">Shut Down</button>

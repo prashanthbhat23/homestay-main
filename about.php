@@ -2,6 +2,9 @@
 include "authentication.php";
 
 include "database.php";
+$sql = "SELECT * FROM setting limit 1";
+$res = mysqli_query($conn,  $sql);
+$data = $res->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +18,7 @@ include "database.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Heritage Homestay</title>
+    <title><?=$data['title'] ?></title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -64,11 +67,11 @@ include "database.php";
 				</div>
 				<div class="col-lg-6 col-md-6 text-center">
 					<div class="inner-column">
-						<h1>Welcome To <span>Heritage Homestay</span></h1>
+						<h1>Welcome To <span><?=$data['title'] ?></span></h1>
 						
-						<p>A heritage homestay is a type of accommodation where guests can stay in a traditional, historical property or building, often owned and operated by a local family. These homestays provide an opportunity for guests to experience the culture and way of life of the local community, while also supporting the preservation of local heritage. Some heritage homestays may be located in rural areas and provide a unique opportunity to experience traditional agriculture and farming practices. </p>
+						<p><?=$data['about_us'] ?></p>
 						
-						<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a>
+						<a class="btn btn-lg btn-circle btn-outline-new-white" href="reservation.php">Reservation</a>
 					</div>
 				</div>
 				<!-- <div class="col-md-12">
