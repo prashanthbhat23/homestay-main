@@ -69,7 +69,7 @@ $data = $res->fetch_assoc();
                         <div class="main-box mb-red" style="background-color:#7e4b26">
                             <a href="#">
                                 <i class="fa fa-book fa-5x" style="font-weight: 900;"> <?php echo $num_rows_book; ?> </i>
-                                <h5> Total Bookings</h5>
+                                <h5> Current Bookings</h5>
                             </a>
                         </div>
                     </div>

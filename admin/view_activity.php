@@ -1,6 +1,6 @@
 <?php include "../database.php"; 
-    $sql = "SELECT * FROM activities ORDER BY id DESC";
-    $res = mysqli_query($conn,  $sql);
+    $sql1 = "SELECT * FROM activities ORDER BY id DESC";
+    $result = mysqli_query($conn,  $sql1);
 
     $sql = "SELECT * FROM setting limit 1";
     $res = mysqli_query($conn,  $sql);
@@ -40,8 +40,8 @@
                     <div class="row ">
                     <?php include "../message.php"; ?>
                         <?php
-                if (mysqli_num_rows($res) > 0) {
-                    while ($images = mysqli_fetch_assoc($res)) {  ?>
+                if (mysqli_num_rows($result) > 0) {
+                    while ($images = mysqli_fetch_assoc($result)) {  ?>
                         <div class="col-md-4 ">
                          <div class="portfolio-item awesome mix_all" data-cat="awesome">
                                 <img src="../assets/images/activity/<?=$images['image']?>"

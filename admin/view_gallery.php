@@ -1,6 +1,6 @@
 <?php include "../database.php"; 
     $view_gallery = "SELECT * FROM gallery ORDER BY id DESC";
-    $result = mysqli_query($conn, $view_gallery);
+    $result1 = mysqli_query($conn, $view_gallery);
 
     $sql = "SELECT * FROM setting limit 1";
     $res = mysqli_query($conn,  $sql);
@@ -40,8 +40,8 @@
                     <div class="row ">
                        
                         <?php 
-                        if (mysqli_num_rows($result) > 0) {
-                        while ($data = mysqli_fetch_assoc($result)) {  ?>
+                        if (mysqli_num_rows($result1) > 0) {
+                        while ($data = mysqli_fetch_assoc($result1)) {  ?>
                         <div class="col-md-4 ">
                             <div class="portfolio-item awesome mix_all" data-cat="awesome">
                                 <img src="../assets/images/gallery/<?=$data['image']?>" class="img-responsive " style="width: 100%;height: 250px"

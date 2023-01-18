@@ -13,11 +13,13 @@ $data = $res->fetch_assoc();
 					<p><?=$data['about_us'] ?></p>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<h3>Opening hours</h3>
+					<h3>Useful links</h3>
 					
-					<p><span class="text-color">Mon-Wed :</span> 9:Am - 10PM</p>
-					<p><span class="text-color">Thu-Fri :</span> 9:Am - 10PM</p>
-					<p><span class="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
+					<p><a href="reservation.php">Reservation</a></p>
+					<p><a href="about.php">About Us</a></p>
+					<p><a href="gallery.php">Gallery</a></p>
+					<p><a href="activities.php">Activities</a></p>
+					<p><a href="contact.php">Contact Us</a></p>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<h3>Contact information</h3>
@@ -36,9 +38,9 @@ $data = $res->fetch_assoc();
 					</div>
 					<ul class="list-inline f-social">
 						
-				        <li class="list-inline-item"><a href="https://www.facebook.com/prashanthbhat.padyana"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="https://wa.me/9446783911?text=Hello%2C%20I%20have%20some%20queries%20regarding%20your%20homestay%20!%20"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.instagram.com/prashanthbhat23/"><i class="fa fa-instagram" aria-hidden="true"></i></a></l>
+				        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></l>
 					</ul>
 				</div>
 			</div>
@@ -48,7 +50,7 @@ $data = $res->fetch_assoc();
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<p class="company-name">All Rights Reserved. &copy; 2023 <a href="#">Hritage Homestay</a>
+						<p class="company-name">All Rights Reserved. &copy; 2023 <a href="index.php">Hritage Homestay</a>
 					</div>
 				</div>
 			</div>

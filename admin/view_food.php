@@ -1,6 +1,6 @@
 <?php include "../database.php"; 
     $view_food = "SELECT * FROM food ORDER BY id DESC";
-    $res = mysqli_query($conn,  $view_food);
+    $res1 = mysqli_query($conn,  $view_food);
 
     $sql = "SELECT * FROM setting limit 1";
     $res = mysqli_query($conn,  $sql);
@@ -39,8 +39,8 @@
                 <div id="port-folio">
                     <div class="row ">
                         <?php
-                if (mysqli_num_rows($res) > 0) {
-                    while ($data = mysqli_fetch_assoc($res)) {  ?>
+                if (mysqli_num_rows($res1) > 0) {
+                    while ($data = mysqli_fetch_assoc($res1)) {  ?>
                         <div class="col-md-4 ">
                             <div class="portfolio-item awesome mix_all" data-cat="awesome">
                                 <img src="../assets/images/food/<?=$data['image']?>" class="img-responsive "

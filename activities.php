@@ -56,7 +56,7 @@ $data = $res->fetch_assoc();
         <div class="container text-center">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>Static | Activities</h1>
+                    <h1>Activities</h1>
                 </div>
             </div>
         </div>
@@ -67,43 +67,25 @@ $data = $res->fetch_assoc();
     <section>
         <div class="container">
             <div class="owl-carousel">
+                <?php  
+                $view_activities_query="SELECT * FROM activities";
+                $run_view_activities_query = mysqli_query($conn, $view_activities_query);
+                if (mysqli_num_rows($run_view_activities_query) > 0) {
+                while ($data = mysqli_fetch_assoc($run_view_activities_query)) { 
+                ?>
                 <div class="card" style="margin:60px 0;">
-                    <img class="card-img-top hvr img-fluid" src="assets/images/raft.jpg" alt="Card image cap" style="height: 275px;">
+                    <img class="card-img-top hvr img-fluid" src="assets/images/activity/<?=$data["image"]?>" alt="Card image cap" style="height: 275px;">
                     <div class="card-body">
-                        <h2 class="card-text">Activity : Rafting</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat
-                            adipisci consequatur atque sed beatae aliquid vel, voluptatum amet. Nemo.</p>
+                        <h2 class="card-text">Activity : <?=$data["name"]?></h2>
+                        <p class="card-text"><?=$data["description"]?></p>
 
                     </div>
                 </div>
-
-                <div class="card" style="margin:60px 0;">
-                    <img class="card-img-top hvr img-fluid" src="assets/images/bunji.jpg" alt="Card image cap" style="height: 275px;">
-                    <div class="card-body">
-                        <h2 class="card-text">Activity : Bunji jumping</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat
-                            adipisci consequatur atque sed beatae aliquid vel, voluptatum amet. Nemo.</p>
-                    </div>
-                </div>
-
-                <div class="card" style="margin:60px 0;">
-                    <img class="card-img-top hvr img-fluid" src="assets/images/boat.jpg" alt="Card image cap" style="height: 275px;">
-                    <div class="card-body">
-                        <h2 class="card-text">Activity : Boating</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat
-                            adipisci consequatur atque sed beatae aliquid vel, voluptatum amet. Nemo.</p>
-                    </div>
-                </div>
-
-                <div class="card" style="margin:60px 0;">
-                    <img class="card-img-top hvr img-fluid" src="assets/images/camp.jpg" alt="Card image cap" style="height: 275px;">
-                    <div class="card-body">
-                        <h2 class="card-text bold">Activity : Camp fire</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod placeat
-                            adipisci consequatur atque sed beatae aliquid vel, voluptatum amet. Nemo.</p>
-                    </div>
-
-                </div>
+                <?php
+                } }
+                else{
+                echo "No activities available";
+                } ?>
             </div>
         </div>
     </section>
@@ -113,7 +95,7 @@ $data = $res->fetch_assoc();
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 ml-auto mr-auto text-center">
-                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">ROOMS</a>
+                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="reservation.php">RESERVATION</a>
                     </div>
                 </div>
             </div>

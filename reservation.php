@@ -171,14 +171,14 @@ $date = date('Y-m-d');
                 <div class="row">
                     <div class="col-md-4">
                         <label class="date">CHECK IN DATE</label>
-                        <input class="book_n" type="date" min="<?php echo $date; ?>" name="in">
+                        <input id="main_in" class="book_n" type="date" min="<?php echo $date; ?>" name="in">
                     </div>
                     <div class="col-md-4">
                         <label class="date">CHECK OUT DATE</label>
-                        <input class="book_n" type="date" min="<?php echo $date; ?>" name="out">
+                        <input id="main_out" class="book_n" type="date" min="<?php echo $date; ?>" name="out">
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-common book_btn" id="submit" type="submit"
+                        <button onclick="savedates()" class="btn btn-common book_btn" id="submit" type="submit"
                             name="chk_avail">Search</button>
                     </div>
                 </div>
@@ -266,7 +266,7 @@ if(isset($_POST["chk_avail"])){
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Check In</label>
-                        <input name="in" type="date" class="form-control" id="in_id" aria-describedby="emailHelp"
+                        <input name="in" type="date" readonly min="<?php echo $date; ?>" class="form-control" id="in_id" aria-describedby="emailHelp"
                             placeholder="">
                     </div>
                     <div class="form-group">
@@ -276,7 +276,7 @@ if(isset($_POST["chk_avail"])){
                         <input type="hidden" name="phone" value="<?php echo $_SESSION["auth_user"]["user_phone"];  ?>">
                         <input type="hidden" name="adhar" value="<?php echo $_SESSION["auth_user"]["user_adhar"];  ?>">
 
-                        <input name="out" onchange="no_nights()" type="date" class="form-control" id="out_id" aria-describedby="emailHelp"
+                        <input name="out" readonly type="date" min="<?php echo $date; ?>" class="form-control" id="out_id" aria-describedby="emailHelp"
                             placeholder="">
                     </div>
                     <div class="form-group">
@@ -315,12 +315,43 @@ if(isset($_POST["chk_avail"])){
 
 
 <script>
+  function savedates(){
+    var temp_in = document.getElementById("main_in").value;
+    var temp_out = document.getElementById("main_out").value;
+    localStorage.setItem("temp_in", temp_in);
+    localStorage.setItem("temp_out", temp_out);
+    document.getElementById("main_in").value = localStorage.getItem("temp_in");
+    document.getElementById("main_out").value = localStorage.getItem("temp_out");
+  }
+
+
   function send(id){
     var type = document.getElementById("r_type_id"+id).innerHTML;
     document.getElementById("room_t").value=type;
 
     var temp_p = document.getElementById("price_id"+id).innerHTML;
     document.getElementById("set_p").value = temp_p;
+
+    var temp_in = localStorage.getItem("temp_in");
+    document.getElementById("in_id").value = temp_in;
+
+    var temp_out = localStorage.getItem("temp_out");
+    document.getElementById("out_id").value = temp_out;
+
+
+    var date1 = new Date($('#in_id').val());
+    var date2 = new Date($('#out_id').val());
+ 
+    var diff = date1.getTime() - date2.getTime();   
+    var daydiff = diff / (1000 * 60 * 60 * 24); 
+     
+    var no_of_stay = Math.abs(daydiff);
+    document.getElementById("no_of_n").value=no_of_stay;
+
+    var f_price=document.getElementById("set_p").value;
+    var total = no_of_stay * f_price ;
+
+    document.getElementById("f_price").value=total;
   }
   
   function no_nights(){
