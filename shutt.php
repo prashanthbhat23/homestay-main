@@ -8,9 +8,13 @@ if($run_sql){
         header("location: index.php");
         exit(0);
     }
-    else{ ?>
+    else{ 
+        $sql = "SELECT * FROM setting limit 1";
+        $res = mysqli_query($conn,  $sql);
+        $data = $res->fetch_assoc();
+?>
 <!doctype html>
-<title>Site Maintenance</title>
+<title><?=$data["title"]?></title>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 <style>
 html,

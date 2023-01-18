@@ -829,10 +829,10 @@ if(isset($_POST["general_set"])){
 if(isset($_POST["contact_set"])){
 	$phone=$_POST["phone"];
 	$email=$_POST["email"];
-	$map=$_POST["map"];
+	// $map=$_POST["map"];
 	$address=$_POST["address"];
 
-	$set_set_query="UPDATE setting SET phone='$phone',email='$email',map='$map',address='$address'";
+	$set_set_query="UPDATE setting SET phone='$phone',email='$email',address='$address'";
 	$run_set_set_query=mysqli_query($conn,$set_set_query);
 
 	if($run_set_set_query)

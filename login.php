@@ -6,6 +6,10 @@ if(isset($_SESSION["auth"])){
   header("location:index.php");
   exit(0);
 }
+include "database.php";
+$sql = "SELECT * FROM setting limit 1";
+$res = mysqli_query($conn,  $sql);
+$data = $res->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +23,7 @@ if(isset($_SESSION["auth"])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Yamifood Restaurant - Responsive HTML5 Template</title>
+    <title><?=$data['title'] ?></title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -163,8 +167,8 @@ a:hover, a:focus{
 </h1> 
 <form action="user_login_register.php" method="POST" class="login-form form">
     <?php include "message.php" ?>
-    <input type="email" class="input" placeholder="Email" name="email">
-    <input type="password" class="input" placeholder="Password" name="password">
+    <input type="email" class="input" placeholder="Email" name="email" required>
+    <input type="password" class="input" placeholder="Password" name="password" required>
     <a class="forgot-link" href="recover_pass.php">Forgot password?</a>
     <input type="submit" name="login_user" value="Login" class="send-btn btn">
     <div class="form-link-holder">
