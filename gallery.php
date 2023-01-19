@@ -64,7 +64,7 @@ $data = $res->fetch_assoc();
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
 						<h2>Gallery</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<p>The beauty of our Heritage Homestay. </p>
 					</div>
 				</div>
 			</div>
@@ -96,7 +96,7 @@ $data = $res->fetch_assoc();
                 <div class="col-lg-12">
                     <div class="heading-title text-center">
                         <h2>Customer Reviews</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                        <p>Customer reviews are accepted here</p>
                     </div>
                 </div>
             </div>
@@ -171,7 +171,7 @@ $data = $res->fetch_assoc();
 					<div class="overflow-hidden">
 						<h4>Location</h4>
 						<p class="lead">
-							Nehru Nagara, Puttur
+							Mangalore Road,Nehru Nagar, Puttur
 						</p>
 					</div>
 				</div>

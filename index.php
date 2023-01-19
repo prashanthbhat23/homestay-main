@@ -103,7 +103,7 @@ $data = $res->fetch_assoc();
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong><?=$images['title']?></strong></h1>
-                            <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+                            <a class="btn btn-lg btn-circle btn-outline-new-white" href="reservation.php">Reservation</a></p>
                         </div>
                     </div>
                 </div>
@@ -164,8 +164,8 @@ $data = $res->fetch_assoc();
             <div class="row">
                 <div class="col-lg-12">
                     <div class="heading-title text-center">
-                        <h2>Puttur | Home Stay</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                        <h2>Heritage | Home Stay</h2>
+                        <p>A heritage homestay is a type of accommodation where guests can stay in a historically or culturally</p>
                     </div>
                 </div>
             </div>
@@ -213,7 +213,7 @@ $data = $res->fetch_assoc();
                 <div class="col-lg-12">
                     <div class="heading-title text-center">
                         <h2>Gallery</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                        <p>The beauty of our Heritage Homestay.</p>
                     </div>
                 </div>
             </div>
@@ -244,7 +244,7 @@ $data = $res->fetch_assoc();
                 <div class="col-lg-12">
                     <div class="heading-title text-center">
                         <h2>Customer Reviews</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                        <p>Customer reviews are accepted here</p>
                     </div>
                 </div>
             </div>

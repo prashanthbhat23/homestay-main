@@ -137,7 +137,7 @@ $data = $res->fetch_assoc();
 					<div class="overflow-hidden">
 						<h4>Email</h4>
 						<p class="lead">
-							prashanthpadyana@gmail.com
+							heritage@gmail.com
 						</p>
 					</div>
 				</div>
@@ -146,9 +146,7 @@ $data = $res->fetch_assoc();
 					<div class="overflow-hidden">
 						<h4>Location</h4>
 						<p class="lead">
-						shri mahalingeshwara temple	
-						padyana , 
-						karnataka
+						Mangalore Road,Nehru nagar,Puttur
 						</p>
 					</div>
 				</div>

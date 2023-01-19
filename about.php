@@ -88,7 +88,7 @@ $data = $res->fetch_assoc();
         <div class="container">
 		<div class="heading-title text-center">
 						<h2>Activities</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<p>Heritage homestays typically offer a variety of activities that allow guests to experience and learn about the cultural heritage of the area where the homestay is located. Some common activities provided in heritage homestays include:</p>
 					</div>
             <div class="owl-carousel">
 
@@ -125,7 +125,7 @@ $data = $res->fetch_assoc();
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
 						<h2>Special Menu</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<p>Our heritage homestay typically offers traditional and locally-sourced food as part of the overall cultural experience for guests. </p>
 					</div>
 				</div>
 			</div>
@@ -172,7 +172,7 @@ $data = $res->fetch_assoc();
                 <div class="col-lg-12">
                     <div class="heading-title text-center">
                         <h2>Customer Reviews</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                        <p>Customer reviews are accepted here.</p>
                     </div>
                 </div>
             </div>
@@ -229,7 +229,7 @@ $data = $res->fetch_assoc();
 					<div class="overflow-hidden">
 						<h4>Phone</h4>
 						<p class="lead">
-							+01 123-456-4590
+							+91 9740782911
 						</p>
 					</div>
 				</div>
@@ -238,7 +238,7 @@ $data = $res->fetch_assoc();
 					<div class="overflow-hidden">
 						<h4>Email</h4>
 						<p class="lead">
-							yourmail@gmail.com
+							heritage@gmail.com
 						</p>
 					</div>
 				</div>
@@ -247,7 +247,7 @@ $data = $res->fetch_assoc();
 					<div class="overflow-hidden">
 						<h4>Location</h4>
 						<p class="lead">
-							800, Lorem Street, US
+							Mangalore Road,Nehru nagar,Puttur
 						</p>
 					</div>
 				</div>
