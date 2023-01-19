@@ -6,7 +6,7 @@ if(isset($_SESSION["auth"])){
   header("location:index.php");
   exit(0);
 }
-
+include "database.php";
 $sql = "SELECT * FROM setting limit 1";
 $res = mysqli_query($conn,  $sql);
 $data = $res->fetch_assoc();
