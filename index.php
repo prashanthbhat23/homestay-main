@@ -103,7 +103,7 @@ $data = $res->fetch_assoc();
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong><?=$images['title']?></strong></h1>
-                            <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+                            <a class="btn btn-lg btn-circle btn-outline-new-white" href="reservation.php">Reservation</a></p>
                         </div>
                     </div>
                 </div>

@@ -169,7 +169,7 @@ a:hover, a:focus{
     <?php include "message.php" ?>
     <input type="email" class="input" placeholder="Email" name="email" required>
     <input type="password" class="input" placeholder="Password" name="password" required>
-    <a class="forgot-link" href="recover_pass.php">Forgot password?</a>
+    <!-- <a class="forgot-link" href="recover_pass.php">Forgot password?</a> -->
     <input type="submit" name="login_user" value="Login" class="send-btn btn">
     <div class="form-link-holder">
       Don't you have an account?
