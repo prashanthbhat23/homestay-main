@@ -20,6 +20,7 @@
 								<!-- <a class="dropdown-item" href="rooms.php">Rooms</a> -->
 								<a class="dropdown-item" href="reservation.php">Reservation</a>
 								<a class="dropdown-item" href="activities.php">Activities</a>
+								<a class="dropdown-item" href="places.php">Nearby Places</a>
 								
 							</div>
 						</li>

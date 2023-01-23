@@ -165,6 +165,41 @@ $data = $res->fetch_assoc();
 	</div>
 	<!-- End Menu -->
 	
+    <section>
+        <div class="container">
+		<div class="heading-title text-center">
+						<h2>Nearby Places</h2>
+						<p>Heritage homestays typically offer a variety of activities that allow guests to experience and learn about the cultural heritage of the area where the homestay is located. Some common activities provided in heritage homestays include:</p>
+					</div>
+            <div class="owl-carousel">
+
+            <?php  
+                $view_activities_query="SELECT * FROM places";
+                $run_view_activities_query = mysqli_query($conn, $view_activities_query);
+                if (mysqli_num_rows($run_view_activities_query) > 0) {
+                while ($data = mysqli_fetch_assoc($run_view_activities_query)) { 
+                ?> 
+
+
+                <div class="card" style="margin:60px 0;">
+                    <img class="card-img-top hvr img-fluid" src="assets/images/places/<?=$data['image']?>" alt="Card image cap" style="height: 275px;">
+                    <div class="card-body">
+                        <h2 class="card-text"><?=$data['name']?> </h2>
+                        <p class="card-text"><?=$data['description']?></p>
+                        <h1>
+                        <span class="badge badge-primary"><?=$data["distance"]?> km</span>
+                        </h1>
+                    </div>
+                </div>
+        <?php } } ?>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     	<!-- Start Customer Reviews -->
 	<div class="customer-reviews-box">
         <div class="container">
