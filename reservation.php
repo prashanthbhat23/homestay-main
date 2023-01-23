@@ -303,7 +303,7 @@ if(isset($_POST["chk_avail"])){
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-left">
                 <p class="lead ">
-                    Note: Check In Time : 12:00 AM <br> Check Out Time : 11:30 AM
+                    Note: Check In Time : 12:00 PM <br> Check Out Time : 11:30 AM
                 </p>
                 <span class="lead">There will be no cancelization or refund once you reserve your stay</span>
             </div>
