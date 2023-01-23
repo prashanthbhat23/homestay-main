@@ -70,9 +70,9 @@ $data = $res->fetch_assoc();
                 <th>Room</th>
                 <th>Check In</th>
                 <th>Check Out</th>
-                <th>Phone</th>
-                <th>Adhar</th>
                 <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
  
@@ -86,14 +86,45 @@ $data = $res->fetch_assoc();
             while($row = $run_view_booking_query->fetch_assoc()) {
             ?>
             <tr>
+                <form action="code.php" method="POST">
                 <td> <?= $i ?> </td>
                 <td> <?=$row["u_name"]?> </td>
                 <td> <?=$row["room_type"]?> </td>
                 <td> <?=$row["check_in"]?> </td>
                 <td> <?=$row["check_out"]?> </td>
-                <td> <?=$row["phone"]?> </td>
-                <td> <?=$row["adhar"]?> </td>
                 <td> <?=$row["final_price"]?> </td>
+                <td> <?php 
+                if($row["status"] == 1 ){ ?>
+                    <span class="badge badge-pill badge-success">Booked</span>
+                <?php }
+                if($row["status"] == 0 ){ ?>
+                    <span class="badge badge-pill badge-primary">Completed</span>
+                <?php }
+                if($row["status"] == "c" ){ ?>
+                    <span class="badge badge-pill badge-warning">Requested to Cancel</span>
+                <?php }
+                if($row["status"] == "cc" ){ ?>
+                    <span class="badge badge-pill badge-danger">Cancelled</span>
+                <?php }
+                ?>  
+
+                </td>
+
+               
+                <?php 
+                if($row["status"] == 1 ){ ?>
+                 <td> 
+                    <input type="hidden" name="cust_book_id" value="<?=$row['id']?>">
+                    <button type="submit" name="cust_book_cancel" class="btn btn-danger btn-sm">Cancel</button>
+                 </td>
+                <?php }else{ ?>
+                <td> 
+                    <i class="fa fa-check"></i>
+                 </td>
+
+                <?php } ?> 
+                
+                </form>
             </tr>
             <?php 
             $i++;

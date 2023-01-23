@@ -47,6 +47,7 @@ $data = $res->fetch_assoc();
                                 <th>Phone</th>
                                 <th>Adhar</th>
                                 <th>Final price</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -68,10 +69,35 @@ $data = $res->fetch_assoc();
                                 <td> <?=$row["phone"]?></td>
                                 <td> <?=$row["adhar"]?></td>
                                 <td> <?=$row["final_price"]?></td>
+                                <td> <?php 
+                                if($row["status"] == 1 ){ ?>
+                                    <span class="badge badge-pill badge-success">Booked</span>
+                                <?php }
+                                if($row["status"] == 0 ){ ?>
+                                    <span class="badge badge-pill badge-primary">Completed</span>
+                                <?php }
+                                if($row["status"] == "c" ){ ?>
+                                    <span class="badge badge-pill badge-warning">Requested to Cancel</span>
+                                <?php }
+                                if($row["status"] == "cc" ){ ?>
+                                    <span class="badge badge-pill badge-danger">Cancelled</span>
+                                <?php }
+                                ?> 
+                                </td>
+
                                 <?php if($row["status"]==1){ ?>
                                 <td><button name="complete_booking" type="submit" class="timer btn btn-info btn-sm">Complete</button></td>
                                 <?php } 
-                                else{?>
+                                if($row["status"]==0){?>
+                                <td><button name="delete_booking" type="submit" class="timer btn btn-danger btn-sm">Delete</button></td>
+                                <?php } 
+                                if($row["status"]=='c'){?>
+                                <td><button name="allow_booking" type="submit" class="timer btn btn-warning btn-sm">Allow Cancel</button>
+                                <br>
+                                <br>
+                                <button name="deny_booking" type="submit" class="timer btn btn-warning btn-sm">Deny Cancel</button></td>
+                                <?php } 
+                                if($row["status"]=='cc'){?>
                                 <td><button name="delete_booking" type="submit" class="timer btn btn-danger btn-sm">Delete</button></td>
                                 <?php } ?>
                             </tr>

@@ -84,13 +84,34 @@ if(isset($_POST["book_stay"])){
     if($run_book_query){
         $msg="Stay Bookked !";
         $_SESSION["message"]=$msg;
-        header("location:index.php");
+        header("location:view_bookings.php");
         exit(0);
     }
     else{
         $msg="Failed to Book !";
         $_SESSION["message"]=$msg;
         header("location:reservation.php");
+        exit(0);
+    }
+}   
+
+//cancel
+if(isset($_POST["cust_book_cancel"])){
+    $cust_book_id=$_POST["cust_book_id"];
+    
+    $book_query="UPDATE booking SET status='c' WHERE id='$cust_book_id' ";
+    $run_book_query=mysqli_query($conn,$book_query);
+
+    if($run_book_query){
+        $msg="requested to cancel !";
+        $_SESSION["message"]=$msg;
+        header("location:view_bookings.php");
+        exit(0);
+    }
+    else{
+        $msg="Failed to cancel !";
+        $_SESSION["message"]=$msg;
+        header("location:view_bookings.php");
         exit(0);
     }
 }   

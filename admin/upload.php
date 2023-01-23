@@ -850,4 +850,50 @@ if(isset($_POST["contact_set"])){
         exit(0);
 	}
 }
+
+//allow cancel
+if(isset($_POST["allow_booking"])){
+	$book_id=$_POST["book_id"];
+
+	$set_user_query="UPDATE booking SET status='cc' WHERE id='$book_id'";
+	$run_set_user_query=mysqli_query($conn,$set_user_query);
+
+	if($run_set_user_query)
+	{
+		$msg="Cancelled !";
+        $_SESSION["message"]=$msg;
+        header("location:bookings.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to cancel !";
+        $_SESSION["message"]=$msg;
+        header("location:bookings.php");
+        exit(0);
+	}
+}
+
+//deny cancel
+if(isset($_POST["deny_booking"])){
+	$book_id=$_POST["book_id"];
+
+	$set_user_query="UPDATE booking SET status=1 WHERE id='$book_id'";
+	$run_set_user_query=mysqli_query($conn,$set_user_query);
+
+	if($run_set_user_query)
+	{
+		$msg="Cancel Denied !";
+        $_SESSION["message"]=$msg;
+        header("location:bookings.php");
+        exit(0);
+	}
+	else
+	{
+		$msg="Failed to deny !";
+        $_SESSION["message"]=$msg;
+        header("location:bookings.php");
+        exit(0);
+	}
+}
 ?>

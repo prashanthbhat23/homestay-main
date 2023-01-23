@@ -98,6 +98,9 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="view_review.php"><i class="fa fa-dashboard "></i>User Queries</a>
+                    </li>
+                    <li>
                         <a href="settings.php"><i class="fa fa-dashboard "></i>Site settings</a>
                     </li>
                     
