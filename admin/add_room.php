@@ -66,7 +66,7 @@
                                     <input type="file" name="room_image" class="dropzone">
                                 </div>
                             </div>
-                            <button type="submit" name="submit_room" class="btn btn-info">Add food</button>
+                            <button type="submit" name="submit_room" class="btn btn-info">Add room</button>
                         </form>
                     </div>
                 </div>

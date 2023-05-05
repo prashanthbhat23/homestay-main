@@ -225,7 +225,7 @@ $data = $res->fetch_assoc();
                     if (mysqli_num_rows($run_view_gallery_query) > 0) {
                     while ($data = mysqli_fetch_assoc($run_view_gallery_query)) { 
                     ?>
-                    <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="col-sm-12 col-md-4 col-lg-4 gall-img-box">
                         <a class="lightbox" href="assets/images/gallery/<?=$data['image']?>">
                             <img class="img-fluid" src="assets/images/gallery/<?=$data['image']?>" alt="Gallery Images">
                         </a>
@@ -252,30 +252,35 @@ $data = $res->fetch_assoc();
                 <div class="col-md-8 mr-auto ml-auto text-center">
                     <div id="reviews" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner mt-4">
-                            <div class="carousel-item text-center active">
-                                <div class="test_box">
-                                    <h4>Mark jonson</h4>
-                                    <i><img src="assets/images/te1.png" alt="#" /></i>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour,</p>
+                        <div class="carousel-item text-center active">
+                                    <div class="test_box">
+                                        <h4>Pallavi</h4>
+                                        <i><img src="assets/images/te1.png" alt="#" /></i>
+                                        <p>This is one place which will remain etched in my mind forever.The path leading up to this blessed lake is simply out of a movie.</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item text-center">
-                                <div class="test_box">
-                                    <h4>Mark jonson</h4>
-                                    <i><img src="assets/images/te1.png" alt="#" /></i>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour,</p>
+                        <?php
+                        $sql5 = "SELECT * FROM reviews";
+                        $res5 = mysqli_query($conn,  $sql5);
+                        if (mysqli_num_rows($res5) > 0) {
+                            while ($reviews = mysqli_fetch_assoc($res5)) {  
+                                ?>
+
+                                <div class="carousel-item text-center">
+                                    <div class="test_box">
+                                        <h4><?=$reviews['name']?></h4>
+                                        <i><img src="assets/images/te1.png" alt="#" /></i>
+                                        <p><?=$reviews['msg']?></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item text-center">
-                                <div class="test_box">
-                                    <h4>Mark jonson</h4>
-                                    <i><img src="assets/images/te1.png" alt="#" /></i>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour,</p>
-                                </div>
-                            </div>
+                           
+
+
+                            <?php
+                            }
+                            }
+                            ?>
+                            
                         </div>
                         <a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
                             <i class="fa fa-angle-left" aria-hidden="true"></i>

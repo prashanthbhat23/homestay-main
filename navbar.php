@@ -43,7 +43,9 @@
 								style="border:0;background:none">View profile</button></a>
 								<a href="view_bookings.php" class="dropdown-item"><button type="button"
 								style="border:0;background:none">My bookings</button></a>
-								
+								<a href="add_reviews.php" class="dropdown-item"><button type="button"
+								style="border:0;background:none">Add Reviews</button></a>
+
 								<form  action="code.php" method="POST">
 								<a class="dropdown-item"><button type="submit" name="logout_user"
 								style="border:0;background:none">Log out</button></a>

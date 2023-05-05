@@ -60,3 +60,26 @@
 .outer-box-rooms{
     margin: 60px auto;
 }
+
+.gallery-single{
+    height: 300px !important;
+    width: 100% !important;
+}
+
+.gallery-single img{
+    height: 100% !important;
+    width: 100% !important;
+} 
+
+.gall-img-box a img{
+    height: 400px !important;
+    width: 100% !important;
+}
+
+.carousel-item{
+    height: 200px !important;
+    overflow-y: hidden;
+  }
+  .test_box{
+    height: 100% !important;
+  }
