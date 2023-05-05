@@ -76,7 +76,7 @@ $data = $res->fetch_assoc();
                 if (mysqli_num_rows($run_view_gallery_query) > 0) {
                 while ($data = mysqli_fetch_assoc($run_view_gallery_query)) { 
                 ?>
-					<div class="col-sm-12 col-md-4 col-lg-4">
+					<div class="col-sm-12 col-md-4 col-lg-4 gall-img-box">
 						<a class="lightbox" href="assets/images/gallery/<?=$data['image']?>">
 							<img class="img-fluid" src="assets/images/gallery/<?=$data['image']?>" alt="Gallery Images">
 						</a>
